@@ -24,6 +24,7 @@
     "autoprefixer": "^6.3.3",
     "babel": "^6.5.1",
     "babel-loader": "^6.2.2",
+    "babel-plugin-react-remove-prop-types": "^2.0.2",
     "babel-plugin-transform-object-assign": "^6.5.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
@@ -37,6 +38,7 @@
     "react-addons-perf": "^0.14.7",
     "standard": "^6.0.4",
     "style-loader": "^0.13.0",
+    "surge": "^0.17.7",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.13"
   },
