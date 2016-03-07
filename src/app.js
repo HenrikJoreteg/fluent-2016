@@ -1,6 +1,7 @@
 import React from 'react'
 import LoginPage from './pages/login'
 import Nav from './components/nav'
+import { connect } from 'react-redux'
 
 const App = ({url}) => {
   let page
@@ -24,4 +25,10 @@ const App = ({url}) => {
   )
 }
 
-export default App
+const select = (state) => {
+  return {
+    url: state.route.url
+  }
+}
+
+export default connect(select)(App)
