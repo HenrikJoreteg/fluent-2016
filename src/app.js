@@ -2,8 +2,10 @@ import React from 'react'
 import LoginPage from './pages/login'
 import Nav from './components/nav'
 import { connect } from 'react-redux'
+import NavHelper from 'react-internal-nav'
+import { updateUrl } from './actions'
 
-const App = ({url}) => {
+const App = ({updateUrl, url}) => {
   let page
   let nav
 
@@ -16,12 +18,12 @@ const App = ({url}) => {
   }
 
   return (
-    <div>
+    <NavHelper onInternalNav={updateUrl}>
       {nav}
       <div className='container'>
         {page}
       </div>
-    </div>
+    </NavHelper>
   )
 }
 
@@ -31,4 +33,4 @@ const select = (state) => {
   }
 }
 
-export default connect(select)(App)
+export default connect(select, {updateUrl})(App)
