@@ -8,15 +8,17 @@ export const updateUrl = (url) => {
 // DO_LOGIN
 export const DO_LOGIN = 'DO_LOGIN'
 export const doLogin = () => {
-  const loginUrl = 'https://github.com/login/oauth/authorize?' + qs.stringify({
-    client_id: '34d32bcd940626d0d6f3',
-    redirect_uri: `${window.location.origin}/auth/callback`,
-    scope: 'user,repo'
-  })
+  return (dispatch) => {
+    const loginUrl = 'https://github.com/login/oauth/authorize?' + qs.stringify({
+      client_id: '34d32bcd940626d0d6f3',
+      redirect_uri: `${window.location.origin}/auth/callback`,
+      scope: 'user,repo'
+    })
 
-  window.location = loginUrl
+    dispatch({ type: DO_LOGIN, url: loginUrl })
 
-  // return { type: DO_LOGIN }
+    window.location = loginUrl
+  }
 }
 
 // FETCH_TOKEN
