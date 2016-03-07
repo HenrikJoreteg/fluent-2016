@@ -18,3 +18,11 @@ export const doLogin = () => {
 
   // return { type: DO_LOGIN }
 }
+
+// FETCH_TOKEN
+export const FETCH_TOKEN = 'FETCH_TOKEN'
+export const FETCH_TOKEN_SUCCESS = 'FETCH_TOKEN_SUCCESS'
+export const FETCH_TOKEN_ERROR = 'FETCH_TOKEN_ERROR'
+export const fetchToken = () => {
+  return { type: FETCH_TOKEN }
+}
