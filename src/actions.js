@@ -23,6 +23,23 @@ export const doLogin = () => {
 export const FETCH_TOKEN = 'FETCH_TOKEN'
 export const FETCH_TOKEN_SUCCESS = 'FETCH_TOKEN_SUCCESS'
 export const FETCH_TOKEN_ERROR = 'FETCH_TOKEN_ERROR'
-export const fetchToken = () => {
-  return { type: FETCH_TOKEN }
+export const fetchToken = (code) => {
+  const clientId = '34d32bcd940626d0d6f3'
+
+  return (dispatch) => {
+    dispatch({ type: FETCH_TOKEN })
+    fetch(`https://github-secret-keeper.herokuapp.com/${clientId}/${code}`)
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error(response.statusText)
+        }
+        return response.json()
+      })
+      .then((data) => {
+        dispatch({ type: FETCH_TOKEN_SUCCESS, payload: data })
+      })
+      .catch((error) => {
+        dispatch({ type: FETCH_TOKEN_ERROR, error })
+      })
+  }
 }
