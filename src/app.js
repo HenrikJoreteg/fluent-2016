@@ -4,10 +4,13 @@ import Nav from './components/nav'
 import { connect } from 'react-redux'
 import NavHelper from 'react-internal-nav'
 import { updateUrl } from './actions'
+import renderUrl from './helpers/render-url'
 
 const App = ({updateUrl, url}) => {
   let page
   let nav
+
+  renderUrl(url)
 
   if (url === '/') {
     page = <LoginPage/>
