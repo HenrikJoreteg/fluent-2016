@@ -3,4 +3,4 @@ import { render } from 'react-dom'
 import App from './app'
 import './styles/main.styl'
 
-render(<App name='asdfa'/>, document.body.firstChild)
+render(<App url={window.location.pathname}/>, document.body.firstChild)
