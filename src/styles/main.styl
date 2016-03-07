@@ -1,0 +1,31 @@
+/*
+  border-box all the things!
+  Paul Irish: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+*/
+html
+  box-sizing: border-box;
+
+*, *:before, *:after
+  box-sizing: inherit
+
+
+/*
+  Use system fonts for maximum style + minimum size
+  Credit Marcin Wichary of Medium
+  https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
+*/
+body
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+  "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+
+@import 'yeticss'
+
+.login
+  text-align: center
+
+  header
+    margin-top: 100px
+
+  footer
+    margin-top: 20px
