@@ -3,7 +3,7 @@ import LoginPage from './pages/login'
 import Nav from './components/nav'
 import { connect } from 'react-redux'
 import NavHelper from 'react-internal-nav'
-import { updateUrl } from './actions'
+import { updateUrl, doLogin } from './actions'
 import renderUrl from './helpers/render-url'
 
 const App = ({updateUrl, url}) => {
@@ -13,7 +13,7 @@ const App = ({updateUrl, url}) => {
   renderUrl(url)
 
   if (url === '/') {
-    page = <LoginPage/>
+    page = <LoginPage doLogin={doLogin}/>
   }
 
   if (url !== '/') {
@@ -36,4 +36,4 @@ const select = (state) => {
   }
 }
 
-export default connect(select, {updateUrl})(App)
+export default connect(select, {updateUrl, doLogin})(App)
