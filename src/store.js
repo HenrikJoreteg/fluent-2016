@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
+import { compose, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 
@@ -15,5 +15,10 @@ const debugLogger = (store) => (next) => (action) => {
 }
 
 export default (initialState) => {
-  return createStore(rootReducer, initialState, applyMiddleware(thunk, debugLogger))
+  const createStoreWithMiddleWare = compose(
+    applyMiddleware(thunk, debugLogger),
+    window.devToolsExtension ? window.devToolsExtension() : (f) => f
+  )(createStore)
+
+  return createStoreWithMiddleWare(rootReducer, initialState)
 }
