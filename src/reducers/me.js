@@ -16,7 +16,7 @@ try {
 }
 
 const initialState = {
-  data: null,
+  data: user,
   token: token,
   error: null,
   loading: false
