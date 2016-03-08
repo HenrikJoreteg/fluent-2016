@@ -1,4 +1,5 @@
 import qs from 'query-string'
+import fetchHelper from './helpers/fetch-helper'
 
 export const UPDATE_URL = 'UPDATE_URL'
 export const updateUrl = (url) => {
@@ -30,16 +31,7 @@ export const fetchToken = (code) => {
 
   return (dispatch) => {
     dispatch({ type: FETCH_TOKEN })
-    fetch(`https://github-secret-keeper.herokuapp.com/${clientId}/${code}`)
-      .then((response) => {
-        if (response.status >= 400) {
-          throw new Error(response.statusText)
-        }
-        if (response.status === 204) {
-          return
-        }
-        return response.json()
-      })
+    fetchHelper(`https://github-secret-keeper.herokuapp.com/${clientId}/${code}`)
       .then((data) => {
         const token = window.localStorage.token = data.access_token
         dispatch({ type: FETCH_TOKEN_SUCCESS, payload: token })
@@ -50,22 +42,4 @@ export const fetchToken = (code) => {
   }
 }
 
-
-/*
-
-`https://api.github.com${url}`
-
-fetch('/user')
-  .then((data) => {
-
-  })
-  .catch((error) => {
-
-  })
-
-{headers: {
-  Authorization: 'token ' + token
-}}
-
-fetch('/asasd')
-*/
+// FETCH_USER
