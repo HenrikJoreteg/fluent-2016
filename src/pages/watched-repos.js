@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { fetchWatchedRepos } from '../actions'
 
 const WatchedReposPage = React.createClass({
+  propTypes: {
+    loading: PropTypes.bool.isRequired,
+    repos: PropTypes.array.isRequired,
+    fetchWatchedRepos: PropTypes.func.isRequired
+  },
+
   componentDidMount () {
     this.props.fetchWatchedRepos()
   },
