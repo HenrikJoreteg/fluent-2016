@@ -52,6 +52,9 @@ export const fetchToken = (code) => {
 
 
 /*
+
+`https://api.github.com${url}`
+
 fetch('/user')
   .then((data) => {
 
