@@ -6,7 +6,7 @@ export const updateUrl = (url, options) => {
   if (options && options.replace) {
     window.history.replaceState({}, null, url)
   }
-  return { type: UPDATE_URL, payload: url, replace: options.replace }
+  return { type: UPDATE_URL, payload: url }
 }
 
 // DO_LOGIN
