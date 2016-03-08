@@ -6,6 +6,7 @@ const WatchedReposPage = React.createClass({
   },
 
   render () {
+    // fetchhelper('/user/subscriptions')
     //const { repos } = this.props
 
     const repos = [
