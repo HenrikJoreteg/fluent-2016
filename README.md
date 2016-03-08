@@ -72,6 +72,13 @@ I'll be building the app *in this repo* so I'll be pushing here frequently so yo
 
 I'm excited! Hope you are too, let's build some cool stuff together.
 
+## If you want to run your own production version of this
+
+1. package.json "deploy" scripts needs your domain
+2. run your own heroku instance of secret keeper: https://github.com/HenrikJoreteg/github-secret-keeper
+3. register your app with the godfather (GitHub.com)
+4. Update config to use your client ID
+
 ## Note to Windows users
 
 Change the `"build"` line in `package.json` to:

@@ -18,8 +18,8 @@ ensurePolyfills(() => {
     const query = qs.parse(window.location.search)
     store.dispatch(fetchTokenAndUser(query.code))
     store.dispatch(updateUrl('/watched-repos', {replace: true}))
-  } else if (store.getState().me.token) {
-    store.dispatch(updateUrl('/watched-repos', {replace: true}))
+  } else if (!store.getState().me.token) {
+    store.dispatch(updateUrl('/', {replace: true}))
   }
 
   const setCurrentUrl = () => {
