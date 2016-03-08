@@ -35,7 +35,6 @@ export const fetchTokenAndUser = (code) => {
       .then((data) => {
         const token = window.localStorage.token = data.access_token
         dispatch({ type: FETCH_TOKEN_SUCCESS, payload: token })
-        //dispatch(fetchUser())
       })
       .catch((error) => {
         dispatch({ type: FETCH_TOKEN_ERROR, error })
