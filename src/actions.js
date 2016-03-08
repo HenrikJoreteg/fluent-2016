@@ -2,8 +2,8 @@ import qs from 'query-string'
 import fetchHelper from './helpers/fetch-helper'
 
 export const UPDATE_URL = 'UPDATE_URL'
-export const updateUrl = (url, options = {replace: false}) => {
-  if (options.replace) {
+export const updateUrl = (url, options) => {
+  if (options && options.replace) {
     window.history.replaceState({}, null, url)
   }
   return { type: UPDATE_URL, payload: url, replace: options.replace }
