@@ -1,32 +1,26 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchWatchedRepos } from '../actions'
 
 const WatchedReposPage = React.createClass({
   componentDidMount () {
-    this.props.fetchRepos()
+    this.props.fetchWatchedRepos()
   },
 
   render () {
-    // fetchhelper('/user/subscriptions')
-    //const { repos } = this.props
-
-    const repos = [
-      {
-        id: '1',
-        full_name: 'repo1'
-      },
-      {
-        id: '2',
-        full_name: 'repo2'
-      }
-    ]
+    const { repos, loading } = this.props
 
     let content
 
-    if (repos.length) {
+    if (loading) {
+      content = (
+        <h3>fetching repos...</h3>
+      )
+    } else if (repos.length) {
       content = (
         <div>
           {repos.map((repo) => {
-            return <div key={repo.id}>hi {repo.full_name}</div>
+            return <div key={repo.id}>{repo.full_name}</div>
           })}
         </div>
       )
@@ -41,4 +35,15 @@ const WatchedReposPage = React.createClass({
   }
 })
 
-export default WatchedReposPage
+const select = (state) => {
+  return {
+    repos: state.watchedRepos.data,
+    loading: state.watchedRepos.loading
+  }
+}
+
+const actionsToBind = {
+  fetchWatchedRepos
+}
+
+export default connect(select, actionsToBind)(WatchedReposPage)

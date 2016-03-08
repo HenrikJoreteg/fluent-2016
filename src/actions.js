@@ -74,3 +74,20 @@ export const fetchUser = () => {
       })
   }
 }
+
+// FETCH_WATCHED_REPOS
+export const FETCH_WATCHED_REPOS = 'FETCH_WATCHED_REPOS'
+export const FETCH_WATCHED_REPOS_SUCCESS = 'FETCH_WATCHED_REPOS_SUCCESS'
+export const FETCH_WATCHED_REPOS_ERROR = 'FETCH_WATCHED_REPOS_ERROR'
+export const fetchWatchedRepos = () => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_WATCHED_REPOS })
+    fetchHelper('/user/subscriptions')
+      .then((data) => {
+        dispatch({ type: FETCH_WATCHED_REPOS_SUCCESS, payload: data })
+      })
+      .catch((error) => {
+        dispatch({ type: FETCH_WATCHED_REPOS_ERROR, error })
+      })
+  }
+}
