@@ -6,7 +6,8 @@ import NavHelper from 'react-internal-nav'
 import { updateUrl, doLogin } from './actions'
 import renderUrl from './helpers/render-url'
 
-const App = ({doLogin, updateUrl, url}) => {
+const App = (props) => {
+  const { userData, doLogin, updateUrl, url } = props
   let page
   let nav
 
@@ -17,7 +18,7 @@ const App = ({doLogin, updateUrl, url}) => {
   }
 
   if (url !== '/') {
-    nav = <Nav/>
+    nav = <Nav userData={userData}/>
   }
 
   return (
@@ -32,7 +33,8 @@ const App = ({doLogin, updateUrl, url}) => {
 
 const select = (state) => {
   return {
-    url: state.route.url
+    url: state.route.url,
+    userData: state.me.data
   }
 }
 
