@@ -6,7 +6,7 @@ import NavHelper from 'react-internal-nav'
 import { updateUrl, doLogin, doLogout } from './actions'
 import renderUrl from './helpers/render-url'
 
-const App = (props) => {
+export const App = (props) => {
   const { userData, doLogout, doLogin, updateUrl, url } = props
   let page
   let nav
