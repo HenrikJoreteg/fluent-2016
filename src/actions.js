@@ -35,6 +35,9 @@ export const fetchToken = (code) => {
         if (response.status >= 400) {
           throw new Error(response.statusText)
         }
+        if (response.status === 204) {
+          return
+        }
         return response.json()
       })
       .then((data) => {
@@ -46,3 +49,20 @@ export const fetchToken = (code) => {
       })
   }
 }
+
+
+/*
+fetch('/user')
+  .then((data) => {
+
+  })
+  .catch((error) => {
+
+  })
+
+{headers: {
+  Authorization: 'token ' + token
+}}
+
+fetch('/asasd')
+*/

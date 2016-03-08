@@ -11,7 +11,6 @@ const store = window.store = createStore()
 
 if (window.location.pathname === '/auth/callback') {
   const query = qs.parse(window.location.search)
-  console.log(query)
   store.dispatch(fetchToken(query.code))
 }
 
