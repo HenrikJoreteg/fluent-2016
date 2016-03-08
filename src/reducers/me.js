@@ -10,7 +10,7 @@ let user = null
 
 try {
   token = window.localStorage.token
-  user = JSON.parse(window.localStorage.user)
+  user = JSON.parse(window.localstorage.user)
 } catch (e) {
   // we're ok with this blowing up
 }
