@@ -26,7 +26,7 @@ export const doLogin = () => {
 export const FETCH_TOKEN = 'FETCH_TOKEN'
 export const FETCH_TOKEN_SUCCESS = 'FETCH_TOKEN_SUCCESS'
 export const FETCH_TOKEN_ERROR = 'FETCH_TOKEN_ERROR'
-export const fetchToken = (code) => {
+export const fetchTokenAndUser = (code) => {
   const clientId = '34d32bcd940626d0d6f3'
 
   return (dispatch) => {
@@ -35,11 +35,30 @@ export const fetchToken = (code) => {
       .then((data) => {
         const token = window.localStorage.token = data.access_token
         dispatch({ type: FETCH_TOKEN_SUCCESS, payload: token })
+        //dispatch(fetchUser())
       })
       .catch((error) => {
         dispatch({ type: FETCH_TOKEN_ERROR, error })
+      })
+      .then(() => {
+        dispatch(fetchUser())
       })
   }
 }
 
 // FETCH_USER
+export const FETCH_USER = 'FETCH_USER'
+export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS'
+export const FETCH_USER_ERROR = 'FETCH_USER_ERROR'
+export const fetchUser = () => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_USER })
+    fetchHelper('/user')
+      .then((data) => {
+        dispatch({ type: FETCH_USER_SUCCESS, payload: data })
+      })
+      .catch((error) => {
+        dispatch({ type: FETCH_USER_ERROR, error })
+      })
+  }
+}
