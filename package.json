@@ -1,6 +1,6 @@
 {
   "name": "watcher-watcher",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "author": "Henrik Joreteg <henrik@joreteg.com> (joreteg.com)",
   "dependencies": {
     "es6-promise": "^3.0.2",
