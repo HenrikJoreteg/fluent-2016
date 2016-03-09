@@ -1,4 +1,5 @@
 var getConfig = require('hjs-webpack')
+var renderPage = require('./server-render')
 
 module.exports = getConfig({
   in: 'src/root.js',
@@ -7,7 +8,8 @@ module.exports = getConfig({
   serveCustomHtmlInDev: false,
   html: function (context) {
     return {
-      '200.html': context.defaultTemplate()
+      'index.html': context.defaultTemplate({ html: renderPage('/') }),
+      '200.html': context.defaultTemplate({ html: renderPage('/watched-repos') })
     }
   }
 })

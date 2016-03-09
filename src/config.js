@@ -1,3 +1,5 @@
+import IS_BROWSER from './helpers/is-browser'
+
 const config = {
   'localhost': {
     clientId: '34d32bcd940626d0d6f3'
@@ -5,6 +7,6 @@ const config = {
   'fluentconf.surge.sh': {
     clientId: 'c86baff14fb87615074e'
   }
-}[window.location.hostname]
+}[IS_BROWSER && window.location.hostname]
 
-export default config
+export default config || {}
