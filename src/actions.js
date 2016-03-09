@@ -13,7 +13,7 @@ export const updateUrl = (url, options) => {
 // DO_LOGIN
 export const DO_LOGIN = 'DO_LOGIN'
 export const doLogin = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     const loginUrl = 'https://github.com/login/oauth/authorize?' + qs.stringify({
       client_id: config.clientId,
       redirect_uri: `${window.location.origin}/auth/callback`,

@@ -4,9 +4,9 @@ module.exports = getConfig({
   in: 'src/root.js',
   out: 'public',
   clearBeforeBuild: '!(images|static)',
+  serveCustomHtmlInDev: false,
   html: function (context) {
     return {
-      'index.html': context.defaultTemplate(),
       '200.html': context.defaultTemplate()
     }
   }

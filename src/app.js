@@ -1,24 +1,16 @@
 import React from 'react'
-import LoginPage from './pages/login'
-import WatchedReposPage from './pages/watched-repos'
 import Nav from './components/nav'
 import { connect } from 'react-redux'
 import NavHelper from 'react-internal-nav'
 import { updateUrl, doLogin, doLogout } from './actions'
 import renderUrl from './helpers/render-url'
+import { currentPageSelector } from './selectors'
 
 export const App = (props) => {
-  const { userData, doLogout, doLogin, updateUrl, url } = props
-  let page
+  const { CurrentPage, userData, doLogout, updateUrl, url } = props
   let nav
 
   renderUrl(url)
-
-  if (url === '/') {
-    page = <LoginPage doLogin={doLogin}/>
-  } else if (url === '/watched-repos') {
-    page = <WatchedReposPage/>
-  }
 
   if (url !== '/') {
     nav = <Nav userData={userData} doLogout={doLogout}/>
@@ -28,7 +20,7 @@ export const App = (props) => {
     <NavHelper onInternalNav={updateUrl}>
       {nav}
       <div className='container'>
-        {page}
+        <CurrentPage/>
       </div>
     </NavHelper>
   )
@@ -36,6 +28,7 @@ export const App = (props) => {
 
 const select = (state) => {
   return {
+    CurrentPage: currentPageSelector(state),
     url: state.route.url,
     userData: state.me.data
   }

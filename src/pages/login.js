@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { doLogin } from '../actions'
 
 const LoginPage = ({doLogin}) => {
   return (
@@ -18,4 +20,4 @@ const LoginPage = ({doLogin}) => {
   )
 }
 
-export default LoginPage
+export default connect(null, {doLogin})(LoginPage)
